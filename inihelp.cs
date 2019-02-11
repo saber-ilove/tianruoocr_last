@@ -19,7 +19,7 @@ namespace 天若OCR文字识别
 		// Token: 0x06000280 RID: 640 RVA: 0x0001D92C File Offset: 0x0001BB2C
 		public static string GetValue(string sectionName, string key)
 		{
-			string text = AppDomain.CurrentDomain.BaseDirectory + "Data\\config.ini";
+			string text = AppDomain.CurrentDomain.BaseDirectory + "天若OCR文字识别.ini";
 			bool flag = !File.Exists(text);
 			bool flag2 = flag;
 			bool flag3 = flag2;
@@ -40,7 +40,7 @@ namespace 天若OCR文字识别
 		// Token: 0x06000281 RID: 641 RVA: 0x0001D9D0 File Offset: 0x0001BBD0
 		public static bool SetValue(string sectionName, string key, string value)
 		{
-			string text = AppDomain.CurrentDomain.BaseDirectory + "Data\\config.ini";
+			string text = AppDomain.CurrentDomain.BaseDirectory + "天若OCR文字识别.ini";
 			bool flag = !File.Exists(text);
 			bool flag2 = flag;
 			bool flag3 = flag2;

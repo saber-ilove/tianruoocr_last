@@ -912,7 +912,7 @@ namespace 天若OCR文字识别
 			{
 				this.OCR_foreach(this.interface_flag);
 			}
-			string filePath = AppDomain.CurrentDomain.BaseDirectory + "Data\\config.ini";
+			string filePath = AppDomain.CurrentDomain.BaseDirectory + "天若OCR文字识别.ini";
 			if (inihelp.GetValue("快捷键", "文字识别") != "请按下快捷键")
 			{
 				string value = inihelp.GetValue("快捷键", "文字识别");
@@ -986,7 +986,7 @@ namespace 天若OCR文字识别
 			fmSetting.ShowDialog();
 			if (fmSetting.DialogResult == DialogResult.OK)
 			{
-				string filePath = AppDomain.CurrentDomain.BaseDirectory + "Data\\config.ini";
+				string filePath = AppDomain.CurrentDomain.BaseDirectory + "天若OCR文字识别.ini";
 				StaticValue.v_notecount = Convert.ToInt32(HelpWin32.IniFileHelper.GetValue("配置", "记录数目", filePath));
 				this.pubnote = new string[StaticValue.v_notecount];
 				for (int i = 0; i < StaticValue.v_notecount; i++)
@@ -1632,27 +1632,27 @@ namespace 天若OCR文字识别
 		// Token: 0x060000A0 RID: 160 RVA: 0x0000A520 File Offset: 0x00008720
 		public void tray_update_Click(object sender, EventArgs e)
 		{
-			if (Program.version_url == "0")
-			{
-				Program.Get_update_x("http://cc.ys168.com/f_ht/ajcx/ml.aspx?cz=ml_dq&_dlmc=tianruoyouxin&_dlmm=");
-				if (Program.version_url == "0")
-				{
-					MessageBox.Show("更新程序失效，请到百度网盘下载！", "提醒");
-					Process.Start("https://pan.baidu.com/s/1P2xb9kBwX1gj8j2_APivZw");
-					return;
-				}
-			}
-			if (Program.version_url != "0")
-			{
-				if (new Version(Program.version_url) > new Version(StaticValue.current_v))
-				{
-					Process.Start(Path.GetDirectoryName(Application.ExecutablePath) + "\\Data\\update.exe", " " + Program.download_url + " " + Path.GetFileName(Application.ExecutablePath));
-					this.minico.Dispose();
-					Environment.Exit(0);
-					return;
-				}
-				Process.Start(Path.GetDirectoryName(Application.ExecutablePath) + "\\Data\\update.exe", " 最新版本");
-			}
+			// if (Program.version_url == "0")
+			// {
+			// 	Program.Get_update_x("http://cc.ys168.com/f_ht/ajcx/ml.aspx?cz=ml_dq&_dlmc=tianruoyouxin&_dlmm=");
+			// 	if (Program.version_url == "0")
+			// 	{
+			// 		MessageBox.Show("更新程序失效，请到百度网盘下载！", "提醒");
+			// 		Process.Start("https://pan.baidu.com/s/1P2xb9kBwX1gj8j2_APivZw");
+			// 		return;
+			// 	}
+			// }
+			// if (Program.version_url != "0")
+			// {
+			// 	if (new Version(Program.version_url) > new Version(StaticValue.current_v))
+			// 	{
+			// 		Process.Start(Path.GetDirectoryName(Application.ExecutablePath) + "\\Data\\update.exe", " " + Program.download_url + " " + Path.GetFileName(Application.ExecutablePath));
+			// 		this.minico.Dispose();
+			// 		Environment.Exit(0);
+			// 		return;
+			// 	}
+			// 	Process.Start(Path.GetDirectoryName(Application.ExecutablePath) + "\\Data\\update.exe", " 最新版本");
+			// }
 		}
 
 		// Token: 0x060000A1 RID: 161 RVA: 0x0000262C File Offset: 0x0000082C
@@ -3128,7 +3128,7 @@ namespace 天若OCR文字识别
 		// Token: 0x060000D5 RID: 213 RVA: 0x0000D63C File Offset: 0x0000B83C
 		private void OCR_foreach(string name)
 		{
-			string filePath = AppDomain.CurrentDomain.BaseDirectory + "Data\\config.ini";
+			string filePath = AppDomain.CurrentDomain.BaseDirectory + "天若OCR文字识别.ini";
 			if (name == "韩语")
 			{
 				this.interface_flag = "韩语";

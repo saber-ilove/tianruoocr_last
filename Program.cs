@@ -205,7 +205,7 @@ namespace 天若OCR文字识别
 				fmflags2.Show();
 				fmflags2.DrawStr("天若OCR文字识别");
 			}
-			Program.ReleaseDLL();
+			// Program.ReleaseDLL();
 			Application.Run(new FmMain());
 		}
 
@@ -431,31 +431,31 @@ namespace 天若OCR文字识别
 		}
 
 		// Token: 0x06000296 RID: 662 RVA: 0x0001E70C File Offset: 0x0001C90C
-		public static void ReleaseDLL()
-		{
-			if (!Directory.Exists(AppDomain.CurrentDomain.BaseDirectory + "Data"))
-			{
-				Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + "Data");
-			}
-			if (!File.Exists(AppDomain.CurrentDomain.BaseDirectory + "Data\\screenshot.wav"))
-			{
-				Program.StreamToFile(Assembly.GetExecutingAssembly().GetManifestResourceStream("天若OCR文字识别.screenshot.wav"), "Data\\screenshot.wav");
-			}
-			if (!File.Exists(AppDomain.CurrentDomain.BaseDirectory + "Data\\update.exe"))
-			{
-				Stream manifestResourceStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("天若OCR文字识别.update.exe");
-				byte[] array = new byte[manifestResourceStream.Length];
-				manifestResourceStream.Read(array, 0, (int)manifestResourceStream.Length);
-				File.WriteAllBytes(AppDomain.CurrentDomain.BaseDirectory + "Data\\update.exe", array);
-			}
-			if (!File.Exists(AppDomain.CurrentDomain.BaseDirectory + "Emgu.CV.World.dll"))
-			{
-				Stream manifestResourceStream2 = Assembly.GetExecutingAssembly().GetManifestResourceStream("天若OCR文字识别.Emgu.CV.World.dll");
-				byte[] array2 = new byte[manifestResourceStream2.Length];
-				manifestResourceStream2.Read(array2, 0, (int)manifestResourceStream2.Length);
-				File.WriteAllBytes(AppDomain.CurrentDomain.BaseDirectory + "Emgu.CV.World.dll", array2);
-			}
-		}
+		// public static void ReleaseDLL()
+		// {
+		// 	if (!Directory.Exists(AppDomain.CurrentDomain.BaseDirectory + "Data"))
+		// 	{
+		// 		Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + "Data");
+		// 	}
+		// 	if (!File.Exists(AppDomain.CurrentDomain.BaseDirectory + "Data\\screenshot.wav"))
+		// 	{
+		// 		Program.StreamToFile(Assembly.GetExecutingAssembly().GetManifestResourceStream("天若OCR文字识别.screenshot.wav"), "Data\\screenshot.wav");
+		// 	}
+		// 	if (!File.Exists(AppDomain.CurrentDomain.BaseDirectory + "Data\\update.exe"))
+		// 	{
+		// 		Stream manifestResourceStream = Assembly.GetExecutingAssembly().GetManifestResourceStream("天若OCR文字识别.update.exe");
+		// 		byte[] array = new byte[manifestResourceStream.Length];
+		// 		manifestResourceStream.Read(array, 0, (int)manifestResourceStream.Length);
+		// 		File.WriteAllBytes(AppDomain.CurrentDomain.BaseDirectory + "Data\\update.exe", array);
+		// 	}
+		// 	if (!File.Exists(AppDomain.CurrentDomain.BaseDirectory + "Emgu.CV.World.dll"))
+		// 	{
+		// 		Stream manifestResourceStream2 = Assembly.GetExecutingAssembly().GetManifestResourceStream("天若OCR文字识别.Emgu.CV.World.dll");
+		// 		byte[] array2 = new byte[manifestResourceStream2.Length];
+		// 		manifestResourceStream2.Read(array2, 0, (int)manifestResourceStream2.Length);
+		// 		File.WriteAllBytes(AppDomain.CurrentDomain.BaseDirectory + "Emgu.CV.World.dll", array2);
+		// 	}
+		// }
 
 		// Token: 0x06000297 RID: 663 RVA: 0x0001DC2C File Offset: 0x0001BE2C
 		public static void Get_update_x(string url)
@@ -694,15 +694,15 @@ namespace 天若OCR文字识别
 						bool flag16 = new Version(Program.version_url) > new Version(StaticValue.current_v);
 						bool flag17 = flag16;
 						bool flag18 = flag17;
-						if (flag18)
-						{
-							Process.Start("Data\\update.exe", " " + Program.download_url + " " + Path.GetFileName(Application.ExecutablePath));
-							Environment.Exit(0);
-						}
-						else
-						{
-							Process.Start("Data\\update.exe", " 最新版本");
-						}
+						// if (flag18)
+						// {
+						// 	Process.Start("Data\\update.exe", " " + Program.download_url + " " + Path.GetFileName(Application.ExecutablePath));
+						// 	Environment.Exit(0);
+						// }
+						// else
+						// {
+						// 	Process.Start("Data\\update.exe", " 最新版本");
+						// }
 					}
 				}
 			}
@@ -717,23 +717,17 @@ namespace 天若OCR文字识别
 		// Token: 0x0600029B RID: 667 RVA: 0x0001ECAC File Offset: 0x0001CEAC
 		public static void setini()
 		{
-			string path = AppDomain.CurrentDomain.BaseDirectory + "Data\\config.ini";
-			if (!Directory.Exists(AppDomain.CurrentDomain.BaseDirectory + "Data"))
-			{
-				Directory.CreateDirectory(AppDomain.CurrentDomain.BaseDirectory + "Data");
-			}
+			string path = AppDomain.CurrentDomain.BaseDirectory + "天若OCR文字识别.ini";
 			if (!File.Exists(path))
 			{
-				using (File.Create(path))
-				{
-				}
+				System.IO.File.WriteAllText(path, ";", Encoding.Unicode);
 				inihelp.SetValue("配置", "接口", "搜狗");
-				inihelp.SetValue("配置", "开机自启", "True");
+				inihelp.SetValue("配置", "开机自启", "False");
 				inihelp.SetValue("配置", "快速翻译", "True");
 				inihelp.SetValue("配置", "识别弹窗", "True");
 				inihelp.SetValue("配置", "窗体动画", "窗体");
 				inihelp.SetValue("配置", "记录数目", "20");
-				inihelp.SetValue("配置", "自动保存", "True");
+				inihelp.SetValue("配置", "自动保存", "False");
 				inihelp.SetValue("配置", "截图位置", Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory));
 				inihelp.SetValue("配置", "翻译接口", "谷歌");
 				inihelp.SetValue("快捷键", "文字识别", "F4");
@@ -748,11 +742,11 @@ namespace 天若OCR文字识别
 				inihelp.SetValue("代理", "需要密码", "False");
 				inihelp.SetValue("代理", "服务器账号", "");
 				inihelp.SetValue("代理", "服务器密码", "");
-				inihelp.SetValue("更新", "检测更新", "True");
-				inihelp.SetValue("更新", "更新间隔", "True");
+				inihelp.SetValue("更新", "检测更新", "False");
+				inihelp.SetValue("更新", "更新间隔", "False");
 				inihelp.SetValue("更新", "间隔时间", "24");
 				inihelp.SetValue("截图音效", "自动保存", "True");
-				inihelp.SetValue("截图音效", "音效路径", "Data\\screenshot.wav");
+				inihelp.SetValue("截图音效", "音效路径", "天若OCR文字识别.wav");
 				inihelp.SetValue("截图音效", "粘贴板", "False");
 				inihelp.SetValue("工具栏", "合并", "False");
 				inihelp.SetValue("工具栏", "分段", "False");
@@ -892,7 +886,7 @@ namespace 天若OCR文字识别
 			}
 			if (inihelp.GetValue("截图音效", "音效路径") == "发生错误")
 			{
-				inihelp.SetValue("截图音效", "音效路径", "Data\\screenshot.wav");
+				inihelp.SetValue("截图音效", "音效路径", "天若OCR文字识别.wav");
 			}
 			if (inihelp.GetValue("截图音效", "粘贴板") == "发生错误")
 			{

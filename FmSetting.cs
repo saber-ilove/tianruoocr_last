@@ -320,7 +320,7 @@ namespace 天若OCR文字识别
 			this.text_音效path.Text = value25;
 			if (value25 == "发生错误")
 			{
-				this.text_音效path.Text = "Data\\screenshot.wav";
+				this.text_音效path.Text = "天若OCR文字识别.wav";
 			}
 			string value26 = inihelp.GetValue("取色器", "类型");
 			if (value26 == "发生错误")
@@ -539,7 +539,7 @@ namespace 天若OCR文字识别
 			this.textBox_path.Text = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
 			this.btn_浏览.Enabled = true;
 			this.chbox_save.Checked = true;
-			this.text_音效path.Text = "Data\\screenshot.wav";
+			this.text_音效path.Text = "天若OCR文字识别.wav";
 			this.chbox_copy.Checked = false;
 			this.chbox_取色.Checked = false;
 		}

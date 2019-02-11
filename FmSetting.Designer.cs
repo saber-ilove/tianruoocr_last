@@ -519,7 +519,7 @@
 			this.text_音效path.ReadOnly = true;
 			this.text_音效path.Size = new global::System.Drawing.Size(288, 21);
 			this.text_音效path.TabIndex = 4;
-			this.text_音效path.Text = "Data\\screenshot.wav";
+			this.text_音效path.Text = "天若OCR文字识别.wav";
 			this.label18.AutoSize = true;
 			this.label18.Location = new global::System.Drawing.Point(13, 22);
 			this.label18.Name = "label18";
