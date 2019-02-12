@@ -16,14 +16,19 @@ namespace 天若OCR文字识别
 		[DllImport("kernel32")]
 		public static extern long WritePrivateProfileString(string sectionName, string key, string value, string filePath);
 
-		static string text = AppDomain.CurrentDomain.BaseDirectory + "天若OCR文字识别.ini";
+		public static string CONFIGPATH = AppDomain.CurrentDomain.BaseDirectory + "天若OCR文字识别.ini";
 
 		// Token: 0x06000280 RID: 640 RVA: 0x0001D92C File Offset: 0x0001BB2C
 		public static string GetValue(string sectionName, string key)
 		{
 			byte[] array = new byte[2048];
-			int privateProfileString = inihelp.GetPrivateProfileString(sectionName, key, "发生错误", array, 999, text);
-			return Encoding.Default.GetString(array, 0, privateProfileString);
+			int privateProfileString = inihelp.GetPrivateProfileString(sectionName, key, "发生错误", array, 999, CONFIGPATH);
+			String val = Encoding.Default.GetString(array, 0, privateProfileString);
+			using (StreamWriter sw = File.AppendText(AppDomain.CurrentDomain.BaseDirectory + "debug.txt")) 
+			{
+					sw.WriteLine(sectionName + "|" + key + "|" + privateProfileString + "|" + val);
+			}	
+			return val;
 		}
 
 		// Token: 0x06000281 RID: 641 RVA: 0x0001D9D0 File Offset: 0x0001BBD0
@@ -32,7 +37,7 @@ namespace 天若OCR文字识别
 			bool result;
 			try
 			{
-				result = ((int)inihelp.WritePrivateProfileString(sectionName, key, value, text) > 0);
+				result = ((int)inihelp.WritePrivateProfileString(sectionName, key, value, CONFIGPATH) > 0);
 			}
 			catch (Exception ex)
 			{

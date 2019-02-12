@@ -717,12 +717,10 @@ namespace 天若OCR文字识别
 		// Token: 0x0600029B RID: 667 RVA: 0x0001ECAC File Offset: 0x0001CEAC
 		public static void setini()
 		{
-			string path = AppDomain.CurrentDomain.BaseDirectory + "天若OCR文字识别.ini";
+			string path = inihelp.CONFIGPATH;
 			if (!File.Exists(path))
 			{
-				using (File.Create(path))
-				{
-				}
+				System.IO.File.WriteAllText(path, ";", Encoding.Unicode);
 				inihelp.SetValue("配置", "接口", "搜狗");
 				inihelp.SetValue("配置", "开机自启", "False");
 				inihelp.SetValue("配置", "快速翻译", "True");
@@ -928,7 +926,7 @@ namespace 天若OCR文字识别
 			}
 			if (inihelp.GetValue("特殊", "ali_cookie") == "发生错误")
 			{
-				inihelp.SetValue("特殊", "ali_cookie", "cna=noXhE38FHGkCAXDve7YaZ8Tn; cnz=noXhE4/VhB8CAbZ773ApeV14; isg=BGJi2c2YTeeP6FG7S_Re8kveu-jEs2bNwToQnKz7jlWAfwL5lEO23eh9q3km9N5l; ");
+				inihelp.SetValue("特殊", "ali_cookie", "");
 			}
 			if (inihelp.GetValue("特殊", "ali_account") == "发生错误")
 			{
