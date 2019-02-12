@@ -37,22 +37,20 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Emgu.CV.World">
-      <HintPath>D:\C#学习\百度ocr\Emgu.CV.World.dll</HintPath>
+      <HintPath>Emgu.CV.World.dll</HintPath>
     </Reference>
     <Reference Include="HttpHelper">
-      <HintPath>D:\C#学习\百度ocr\HttpHelper.dll</HintPath>
+      <HintPath>HttpHelper.dll</HintPath>
     </Reference>
     <Reference Include="Interop.MSScriptControl">
-      <HintPath>D:\C#学习\百度ocr\Interop.MSScriptControl.dll</HintPath>
+      <HintPath>Interop.MSScriptControl.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.mshtml">
-      <HintPath>D:\C#学习\百度ocr\Microsoft.mshtml.dll</HintPath>
-    </Reference>
+    <Reference Include="Microsoft.mshtml" />
     <Reference Include="Newtonsoft.Json">
-      <HintPath>D:\C#学习\百度ocr\Newtonsoft.Json.dll</HintPath>
+      <HintPath>Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="ShareX.ScreenCaptureLib">
-      <HintPath>D:\C#学习\百度ocr\ShareX.ScreenCaptureLib.dll</HintPath>
+      <HintPath>ShareX.ScreenCaptureLib.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -61,7 +59,7 @@
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.XML" />
     <Reference Include="zxing">
-      <HintPath>D:\C#学习\百度ocr\zxing.dll</HintPath>
+      <HintPath>zxing.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -159,7 +157,7 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>AdvRichTextBox.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Emgu\CV\World.dll" />
+    <EmbeddedResource Include="Emgu.CV.World.dll" />
     <EmbeddedResource Include="FmHelp.resx">
       <DependentUpon>FmHelp.cs</DependentUpon>
     </EmbeddedResource>
@@ -170,15 +168,13 @@
       <DependentUpon>FmMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HttpHelper.dll" />
-    <EmbeddedResource Include="Newtonsoft\Json.dll" />
+    <EmbeddedResource Include="Newtonsoft.Json.dll" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="screenshot.wav" />
-    <EmbeddedResource Include="ShareX\HelpersLib.dll" />
-    <EmbeddedResource Include="ShareX\ScreenCaptureLib.dll" />
-    <EmbeddedResource Include="update.exe" />
+    <EmbeddedResource Include="ShareX.HelpersLib.dll" />
+    <EmbeddedResource Include="ShareX.ScreenCaptureLib.dll" />
     <EmbeddedResource Include="zxing.dll" />
   </ItemGroup>
   <ItemGroup>

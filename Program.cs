@@ -720,7 +720,9 @@ namespace 天若OCR文字识别
 			string path = AppDomain.CurrentDomain.BaseDirectory + "天若OCR文字识别.ini";
 			if (!File.Exists(path))
 			{
-				System.IO.File.WriteAllText(path, ";", Encoding.Unicode);
+				using (File.Create(path))
+				{
+				}
 				inihelp.SetValue("配置", "接口", "搜狗");
 				inihelp.SetValue("配置", "开机自启", "False");
 				inihelp.SetValue("配置", "快速翻译", "True");

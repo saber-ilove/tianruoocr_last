@@ -912,7 +912,6 @@ namespace 天若OCR文字识别
 			{
 				this.OCR_foreach(this.interface_flag);
 			}
-			string filePath = AppDomain.CurrentDomain.BaseDirectory + "天若OCR文字识别.ini";
 			if (inihelp.GetValue("快捷键", "文字识别") != "请按下快捷键")
 			{
 				string value = inihelp.GetValue("快捷键", "文字识别");
@@ -941,13 +940,13 @@ namespace 天若OCR文字识别
 				string text8 = "F11";
 				this.SetHotkey(text7, text8, value4, 235);
 			}
-			StaticValue.baiduAPI_ID = HelpWin32.IniFileHelper.GetValue("密钥_百度", "secret_id", filePath);
-			if (HelpWin32.IniFileHelper.GetValue("密钥_百度", "secret_id", filePath) == "发生错误")
+			StaticValue.baiduAPI_ID = inihelp.GetValue("密钥_百度", "secret_id");
+			if (inihelp.GetValue("密钥_百度", "secret_id") == "发生错误")
 			{
 				StaticValue.baiduAPI_ID = "请输入secret_id";
 			}
-			StaticValue.baiduAPI_key = HelpWin32.IniFileHelper.GetValue("密钥_百度", "secret_key", filePath);
-			if (HelpWin32.IniFileHelper.GetValue("密钥_百度", "secret_key", filePath) == "发生错误")
+			StaticValue.baiduAPI_key = inihelp.GetValue("密钥_百度", "secret_key");
+			if (inihelp.GetValue("密钥_百度", "secret_key") == "发生错误")
 			{
 				StaticValue.baiduAPI_key = "请输入secret_key";
 			}
@@ -986,8 +985,7 @@ namespace 天若OCR文字识别
 			fmSetting.ShowDialog();
 			if (fmSetting.DialogResult == DialogResult.OK)
 			{
-				string filePath = AppDomain.CurrentDomain.BaseDirectory + "天若OCR文字识别.ini";
-				StaticValue.v_notecount = Convert.ToInt32(HelpWin32.IniFileHelper.GetValue("配置", "记录数目", filePath));
+				StaticValue.v_notecount = Convert.ToInt32(inihelp.GetValue("配置", "记录数目"));
 				this.pubnote = new string[StaticValue.v_notecount];
 				for (int i = 0; i < StaticValue.v_notecount; i++)
 				{
@@ -3128,7 +3126,6 @@ namespace 天若OCR文字识别
 		// Token: 0x060000D5 RID: 213 RVA: 0x0000D63C File Offset: 0x0000B83C
 		private void OCR_foreach(string name)
 		{
-			string filePath = AppDomain.CurrentDomain.BaseDirectory + "天若OCR文字识别.ini";
 			if (name == "韩语")
 			{
 				this.interface_flag = "韩语";
@@ -3216,7 +3213,7 @@ namespace 天若OCR文字识别
 				this.shupai.Text = "竖排√";
 				this.righ_left.Text = "从右向左√";
 			}
-			HelpWin32.IniFileHelper.SetValue("配置", "接口", this.interface_flag, filePath);
+			inihelp.SetValue("配置", "接口", this.interface_flag);
 		}
 
 		// Token: 0x060000D6 RID: 214 RVA: 0x0000207C File Offset: 0x0000027C
