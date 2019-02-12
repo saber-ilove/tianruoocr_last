@@ -3,10 +3,8 @@ image: Visual Studio 2017
 before_deploy:
   - msbuild /p:Configuration=Release /p:DebugSymbols=false /p:DebugType=None
   - cd bin/Release
-  - 7z a full.7z *
-  - 7z a mini.7z *.exe *.wav
-  - appveyor PushArtifact full.7z
-  - appveyor PushArtifact mini.7z
+  - 7z a latest.7z *.exe *.wav
+  - appveyor PushArtifact latest.7z
 
 deploy:
   artifact: /.*\.7z/
