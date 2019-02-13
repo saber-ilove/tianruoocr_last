@@ -967,6 +967,7 @@ namespace 天若OCR文字识别
 					StaticValue.set_合并 = false;
 					inihelp.SetValue("工具栏", "拆分", "True");
 					inihelp.SetValue("工具栏", "合并", "False");
+					inihelp.SaveConfig();
 					return;
 				}
 				if (this.splitcolor)
@@ -979,6 +980,7 @@ namespace 天若OCR文字识别
 					StaticValue.set_合并 = false;
 					inihelp.SetValue("工具栏", "合并", "False");
 					inihelp.SetValue("工具栏", "拆分", "False");
+					inihelp.SaveConfig();
 				}
 			}
 		}
@@ -999,6 +1001,7 @@ namespace 天若OCR文字识别
 					StaticValue.set_合并 = true;
 					inihelp.SetValue("工具栏", "合并", "True");
 					inihelp.SetValue("工具栏", "拆分", "False");
+					inihelp.SaveConfig();
 					return;
 				}
 				if (this.mergecolor)
@@ -1011,6 +1014,7 @@ namespace 天若OCR文字识别
 					StaticValue.set_合并 = false;
 					inihelp.SetValue("工具栏", "合并", "False");
 					inihelp.SetValue("工具栏", "拆分", "False");
+					inihelp.SaveConfig();
 				}
 			}
 		}
@@ -1028,6 +1032,7 @@ namespace 天若OCR文字识别
 					this.topmost_flag = true;
 					inihelp.SetValue("工具栏", "顶置", "True");
 					HelpWin32.SendMessage(StaticValue.mainhandle, 600, 725);
+					inihelp.SaveConfig();
 					return;
 				}
 				this.topmost.Image = (Image)componentResourceManager.GetObject("mode.Image");
@@ -1035,6 +1040,7 @@ namespace 天若OCR文字识别
 				this.topmost_flag = false;
 				inihelp.SetValue("工具栏", "顶置", "False");
 				HelpWin32.SendMessage(StaticValue.mainhandle, 600, 725);
+				inihelp.SaveConfig();
 			}
 		}
 
@@ -1096,6 +1102,7 @@ namespace 天若OCR文字识别
 				inihelp.SetValue("工具栏", "分栏", "False");
 			}
 			this.Fencecolor = bool.Parse(inihelp.GetValue("工具栏", "分栏"));
+			inihelp.SaveConfig();
 			if (this.Fencecolor)
 			{
 				this.toolStripButtonFence.Image = (Image)componentResourceManager.GetObject("toolStripButtonFence2.Image");
@@ -1148,6 +1155,7 @@ namespace 天若OCR文字识别
 		public void saveIniFile()
 		{
 			inihelp.SetValue("工具栏", "顶置", this.topmost_flag.ToString());
+			inihelp.SaveConfig();
 		}
 
 		// Token: 0x06000037 RID: 55 RVA: 0x00005A0C File Offset: 0x00003C0C
@@ -1161,6 +1169,7 @@ namespace 天若OCR文字识别
 					this.toolStripButtoncheck.Image = (Image)componentResourceManager.GetObject("toolStripButtoncheck2.Image");
 					this.checkcolor = true;
 					inihelp.SetValue("工具栏", "检查", "True");
+					inihelp.SaveConfig();
 					return;
 				}
 				if (this.checkcolor)
@@ -1168,6 +1177,7 @@ namespace 天若OCR文字识别
 					this.toolStripButtoncheck.Image = (Image)componentResourceManager.GetObject("toolStripButtoncheck.Image");
 					this.checkcolor = false;
 					inihelp.SetValue("工具栏", "检查", "False");
+					inihelp.SaveConfig();
 				}
 			}
 		}
@@ -1183,6 +1193,7 @@ namespace 天若OCR文字识别
 					this.toolStripButtonTrans.Image = (Image)componentResourceManager.GetObject("toolStripButtonTrans2.Image");
 					this.transcolor = true;
 					inihelp.SetValue("工具栏", "翻译", "True");
+					inihelp.SaveConfig();
 					return;
 				}
 				if (this.transcolor)
@@ -1190,6 +1201,7 @@ namespace 天若OCR文字识别
 					this.toolStripButtonTrans.Image = (Image)componentResourceManager.GetObject("toolStripButtonTrans.Image");
 					this.transcolor = false;
 					inihelp.SetValue("工具栏", "翻译", "False");
+					inihelp.SaveConfig();
 				}
 			}
 		}
@@ -1205,6 +1217,7 @@ namespace 天若OCR文字识别
 					this.toolStripButtonParagraph.Image = (Image)componentResourceManager.GetObject("toolStripButtonParagraph2.Image");
 					this.Paragraphcolor = true;
 					inihelp.SetValue("工具栏", "分段", "True");
+					inihelp.SaveConfig();
 					return;
 				}
 				if (this.Paragraphcolor)
@@ -1212,6 +1225,7 @@ namespace 天若OCR文字识别
 					this.toolStripButtonParagraph.Image = (Image)componentResourceManager.GetObject("toolStripButtonParagraph.Image");
 					this.Paragraphcolor = false;
 					inihelp.SetValue("工具栏", "分段", "False");
+					inihelp.SaveConfig();
 				}
 			}
 		}
@@ -1233,6 +1247,7 @@ namespace 天若OCR文字识别
 					this.toolStripButtonFence.Image = (Image)componentResourceManager.GetObject("toolStripButtonFence2.Image");
 					this.Fencecolor = true;
 					inihelp.SetValue("工具栏", "分栏", "True");
+					inihelp.SaveConfig();
 					return;
 				}
 				if (this.Fencecolor)
@@ -1240,6 +1255,7 @@ namespace 天若OCR文字识别
 					this.toolStripButtonFence.Image = (Image)componentResourceManager.GetObject("toolStripButtonFence.Image");
 					this.Fencecolor = false;
 					inihelp.SetValue("工具栏", "分栏", "False");
+					inihelp.SaveConfig();
 				}
 			}
 		}

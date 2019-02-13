@@ -90,6 +90,7 @@ namespace 天若OCR文字识别
 			{
 				this.webBrowser1.Url = new Uri("https://data.aliyun.com/ai/ocr-other#/ocr-other");
 				inihelp.SetValue("特殊", "ali_cookie", this.textBox1.Text);
+				inihelp.SaveConfig();
 				base.Hide();
 			}
 		}
@@ -138,6 +139,7 @@ namespace 天若OCR文字识别
 			string value2 = documentFromWindow.getElementById("fm-login-password").getAttribute("value", 0).ToString();
 			inihelp.SetValue("特殊", "ali_account", value);
 			inihelp.SetValue("特殊", "ali_password", value2);
+			inihelp.SaveConfig();
 			this.timer1.Stop();
 			return true;
 		}

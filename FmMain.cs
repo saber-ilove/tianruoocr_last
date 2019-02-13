@@ -867,6 +867,7 @@ namespace 天若OCR文字识别
 		public void saveIniFile()
 		{
 			inihelp.SetValue("配置", "接口", this.interface_flag);
+			inihelp.SaveConfig();
 		}
 
 		// Token: 0x0600007D RID: 125 RVA: 0x00008F10 File Offset: 0x00007110
@@ -906,6 +907,7 @@ namespace 天若OCR文字识别
 			if (this.interface_flag == "发生错误")
 			{
 				inihelp.SetValue("配置", "接口", "搜狗");
+				inihelp.SaveConfig();
 				this.OCR_foreach("搜狗");
 			}
 			else
@@ -1914,11 +1916,6 @@ namespace 天若OCR文字识别
 				this.fmflags.DrawStr("快捷键冲突，请更换！");
 			}
 			HelpWin32.RegisterHotKey(base.Handle, flag, (HelpWin32.KeyModifiers)Enum.Parse(typeof(HelpWin32.KeyModifiers), array2[0].Trim()), (Keys)Enum.Parse(typeof(Keys), array2[1].Trim()));
-		}
-
-		// Token: 0x060000B6 RID: 182 RVA: 0x0000207C File Offset: 0x0000027C
-		public void bool_error()
-		{
 		}
 
 		// Token: 0x060000B7 RID: 183 RVA: 0x0000AC24 File Offset: 0x00008E24
@@ -3214,6 +3211,7 @@ namespace 天若OCR文字识别
 				this.righ_left.Text = "从右向左√";
 			}
 			inihelp.SetValue("配置", "接口", this.interface_flag);
+			inihelp.SaveConfig();
 		}
 
 		// Token: 0x060000D6 RID: 214 RVA: 0x0000207C File Offset: 0x0000027C
@@ -5150,6 +5148,7 @@ namespace 天若OCR文字识别
 				this.trans_tencent.Text = "腾讯√";
 				inihelp.SetValue("配置", "翻译接口", "腾讯");
 			}
+			inihelp.SaveConfig();
 		}
 
 		// Token: 0x06000118 RID: 280 RVA: 0x0001293C File Offset: 0x00010B3C
@@ -5674,6 +5673,7 @@ namespace 天若OCR文字识别
 					this.ailibaba.TopMost = true;
 					this.ailibaba.getcookie = "";
 					inihelp.SetValue("特殊", "ali_cookie", this.ailibaba.getcookie);
+					inihelp.SaveConfig();
 					this.ailibaba.ShowDialog();
 					HelpWin32.SetForegroundWindow(this.ailibaba.Handle);
 					return;

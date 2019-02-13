@@ -151,8 +151,15 @@ namespace 天若OCR文字识别
 		[STAThread]
 		public static void Main(string[] args)
 		{
+			try
+			{
+				AppDomain.CurrentDomain.AssemblyResolve += Program.CurrentDomain_AssemblyResolve;
+			}
+			catch
+			{
+				MessageBox.Show("调用dll出错！");
+			}
 			Program.setini();
-			Program.bool_error();
 			Program.checkTimer = new System.Timers.Timer();
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
@@ -171,14 +178,6 @@ namespace 天若OCR文字识别
 				fmflags.Show();
 				fmflags.DrawStr("软件已经运行");
 				return;
-			}
-			try
-			{
-				AppDomain.CurrentDomain.AssemblyResolve += Program.CurrentDomain_AssemblyResolve;
-			}
-			catch
-			{
-				MessageBox.Show("调用dll出错！");
 			}
 			if (args.Length != 0 && args[0] == "更新")
 			{
@@ -717,46 +716,46 @@ namespace 天若OCR文字识别
 		// Token: 0x0600029B RID: 667 RVA: 0x0001ECAC File Offset: 0x0001CEAC
 		public static void setini()
 		{
-			string path = inihelp.CONFIGPATH;
-			if (!File.Exists(path))
-			{
-				System.IO.File.WriteAllText(path, ";", Encoding.Unicode);
-				inihelp.SetValue("配置", "接口", "搜狗");
-				inihelp.SetValue("配置", "开机自启", "False");
-				inihelp.SetValue("配置", "快速翻译", "True");
-				inihelp.SetValue("配置", "识别弹窗", "True");
-				inihelp.SetValue("配置", "窗体动画", "窗体");
-				inihelp.SetValue("配置", "记录数目", "20");
-				inihelp.SetValue("配置", "自动保存", "False");
-				inihelp.SetValue("配置", "截图位置", Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory));
-				inihelp.SetValue("配置", "翻译接口", "谷歌");
-				inihelp.SetValue("快捷键", "文字识别", "F4");
-				inihelp.SetValue("快捷键", "翻译文本", "F9");
-				inihelp.SetValue("快捷键", "记录界面", "请按下快捷键");
-				inihelp.SetValue("快捷键", "识别界面", "请按下快捷键");
-				inihelp.SetValue("密钥_百度", "secret_id", "YsZKG1wha34PlDOPYaIrIIKO");
-				inihelp.SetValue("密钥_百度", "secret_key", "HPRZtdOHrdnnETVsZM2Nx7vbDkMfxrkD");
-				inihelp.SetValue("代理", "代理类型", "系统代理");
-				inihelp.SetValue("代理", "服务器", "");
-				inihelp.SetValue("代理", "端口", "");
-				inihelp.SetValue("代理", "需要密码", "False");
-				inihelp.SetValue("代理", "服务器账号", "");
-				inihelp.SetValue("代理", "服务器密码", "");
-				inihelp.SetValue("更新", "检测更新", "False");
-				inihelp.SetValue("更新", "更新间隔", "False");
-				inihelp.SetValue("更新", "间隔时间", "24");
-				inihelp.SetValue("截图音效", "自动保存", "True");
-				inihelp.SetValue("截图音效", "音效路径", "天若OCR文字识别.wav");
-				inihelp.SetValue("截图音效", "粘贴板", "False");
-				inihelp.SetValue("工具栏", "合并", "False");
-				inihelp.SetValue("工具栏", "分段", "False");
-				inihelp.SetValue("工具栏", "分栏", "False");
-				inihelp.SetValue("工具栏", "拆分", "False");
-				inihelp.SetValue("工具栏", "检查", "False");
-				inihelp.SetValue("工具栏", "翻译", "False");
-				inihelp.SetValue("工具栏", "顶置", "True");
-				inihelp.SetValue("取色器", "类型", "RGB");
-			}
+			inihelp.LoadConfig();
+			inihelp.InitValue("配置", "接口", "搜狗");
+			inihelp.InitValue("配置", "开机自启", "False");
+			inihelp.InitValue("配置", "快速翻译", "True");
+			inihelp.InitValue("配置", "识别弹窗", "True");
+			inihelp.InitValue("配置", "窗体动画", "窗体");
+			inihelp.InitValue("配置", "记录数目", "20");
+			inihelp.InitValue("配置", "自动保存", "False");
+			inihelp.InitValue("配置", "截图位置", Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory));
+			inihelp.InitValue("配置", "翻译接口", "谷歌");
+			inihelp.InitValue("快捷键", "文字识别", "F4");
+			inihelp.InitValue("快捷键", "翻译文本", "F9");
+			inihelp.InitValue("快捷键", "记录界面", "请按下快捷键");
+			inihelp.InitValue("快捷键", "识别界面", "请按下快捷键");
+			inihelp.InitValue("密钥_百度", "secret_id", "YsZKG1wha34PlDOPYaIrIIKO");
+			inihelp.InitValue("密钥_百度", "secret_key", "HPRZtdOHrdnnETVsZM2Nx7vbDkMfxrkD");
+			inihelp.InitValue("代理", "代理类型", "系统代理");
+			inihelp.InitValue("代理", "服务器", "");
+			inihelp.InitValue("代理", "端口", "");
+			inihelp.InitValue("代理", "需要密码", "False");
+			inihelp.InitValue("代理", "服务器账号", "");
+			inihelp.InitValue("代理", "服务器密码", "");
+			inihelp.InitValue("更新", "检测更新", "False");
+			inihelp.InitValue("更新", "更新间隔", "False");
+			inihelp.InitValue("更新", "间隔时间", "24");
+			inihelp.InitValue("截图音效", "自动保存", "True");
+			inihelp.InitValue("截图音效", "音效路径", "天若OCR文字识别.wav");
+			inihelp.InitValue("截图音效", "粘贴板", "False");
+			inihelp.InitValue("工具栏", "合并", "False");
+			inihelp.InitValue("工具栏", "分段", "False");
+			inihelp.InitValue("工具栏", "分栏", "False");
+			inihelp.InitValue("工具栏", "拆分", "False");
+			inihelp.InitValue("工具栏", "检查", "False");
+			inihelp.InitValue("工具栏", "翻译", "False");
+			inihelp.InitValue("工具栏", "顶置", "True");
+			inihelp.InitValue("取色器", "类型", "RGB");
+			inihelp.InitValue("特殊", "ali_cookie", "");
+			inihelp.InitValue("特殊", "ali_account", "");
+			inihelp.InitValue("特殊", "ali_password", "");
+			inihelp.SaveConfig();
 		}
 
 		// Token: 0x0600029C RID: 668 RVA: 0x0001F014 File Offset: 0x0001D214
@@ -779,163 +778,6 @@ namespace 天若OCR文字识别
 			binaryWriter.Write(array);
 			binaryWriter.Close();
 			fileStream.Close();
-		}
-
-		// Token: 0x0600029E RID: 670 RVA: 0x0001F0A4 File Offset: 0x0001D2A4
-		public static void bool_error()
-		{
-			if (inihelp.GetValue("配置", "接口") == "发生错误")
-			{
-				inihelp.SetValue("配置", "接口", "搜狗");
-			}
-			if (inihelp.GetValue("配置", "开机自启") == "发生错误")
-			{
-				inihelp.SetValue("配置", "开机自启", "True");
-			}
-			if (inihelp.GetValue("配置", "快速翻译") == "发生错误")
-			{
-				inihelp.SetValue("配置", "快速翻译", "True");
-			}
-			if (inihelp.GetValue("配置", "识别弹窗") == "发生错误")
-			{
-				inihelp.SetValue("配置", "识别弹窗", "True");
-			}
-			if (inihelp.GetValue("配置", "窗体动画") == "发生错误")
-			{
-				inihelp.SetValue("配置", "窗体动画", "窗体");
-			}
-			if (inihelp.GetValue("配置", "记录数目") == "发生错误")
-			{
-				inihelp.SetValue("配置", "记录数目", "20");
-			}
-			if (inihelp.GetValue("配置", "自动保存") == "发生错误")
-			{
-				inihelp.SetValue("配置", "自动保存", "True");
-			}
-			if (inihelp.GetValue("配置", "翻译接口") == "发生错误")
-			{
-				inihelp.SetValue("配置", "翻译接口", "谷歌");
-			}
-			if (inihelp.GetValue("配置", "截图位置") == "发生错误")
-			{
-				inihelp.SetValue("配置", "截图位置", Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory));
-			}
-			if (inihelp.GetValue("快捷键", "文字识别") == "发生错误")
-			{
-				inihelp.SetValue("快捷键", "文字识别", "F4");
-			}
-			if (inihelp.GetValue("快捷键", "翻译文本") == "发生错误")
-			{
-				inihelp.SetValue("快捷键", "翻译文本", "F9");
-			}
-			if (inihelp.GetValue("快捷键", "记录界面") == "发生错误")
-			{
-				inihelp.SetValue("快捷键", "记录界面", "请按下快捷键");
-			}
-			if (inihelp.GetValue("快捷键", "识别界面") == "发生错误")
-			{
-				inihelp.SetValue("快捷键", "识别界面", "请按下快捷键");
-			}
-			if (inihelp.GetValue("密钥_百度", "secret_id") == "发生错误")
-			{
-				inihelp.SetValue("密钥_百度", "secret_id", "YsZKG1wha34PlDOPYaIrIIKO");
-			}
-			if (inihelp.GetValue("密钥_百度", "secret_key") == "发生错误")
-			{
-				inihelp.SetValue("密钥_百度", "secret_key", "HPRZtdOHrdnnETVsZM2Nx7vbDkMfxrkD");
-			}
-			if (inihelp.GetValue("代理", "代理类型") == "发生错误")
-			{
-				inihelp.SetValue("代理", "代理类型", "系统代理");
-			}
-			if (inihelp.GetValue("代理", "服务器") == "发生错误")
-			{
-				inihelp.SetValue("代理", "服务器", "");
-			}
-			if (inihelp.GetValue("代理", "端口") == "发生错误")
-			{
-				inihelp.SetValue("代理", "端口", "");
-			}
-			if (inihelp.GetValue("代理", "需要密码") == "发生错误")
-			{
-				inihelp.SetValue("代理", "需要密码", "False");
-			}
-			if (inihelp.GetValue("代理", "服务器账号") == "发生错误")
-			{
-				inihelp.SetValue("代理", "服务器账号", "");
-			}
-			if (inihelp.GetValue("代理", "服务器密码") == "发生错误")
-			{
-				inihelp.SetValue("代理", "服务器密码", "");
-			}
-			if (inihelp.GetValue("更新", "检测更新") == "发生错误")
-			{
-				inihelp.SetValue("更新", "检测更新", "True");
-			}
-			if (inihelp.GetValue("更新", "更新间隔") == "发生错误")
-			{
-				inihelp.SetValue("更新", "更新间隔", "True");
-			}
-			if (inihelp.GetValue("更新", "间隔时间") == "发生错误")
-			{
-				inihelp.SetValue("更新", "间隔时间", "24");
-			}
-			if (inihelp.GetValue("截图音效", "自动保存") == "发生错误")
-			{
-				inihelp.SetValue("截图音效", "自动保存", "True");
-			}
-			if (inihelp.GetValue("截图音效", "音效路径") == "发生错误")
-			{
-				inihelp.SetValue("截图音效", "音效路径", "天若OCR文字识别.wav");
-			}
-			if (inihelp.GetValue("截图音效", "粘贴板") == "发生错误")
-			{
-				inihelp.SetValue("截图音效", "粘贴板", "False");
-			}
-			if (inihelp.GetValue("工具栏", "合并") == "发生错误")
-			{
-				inihelp.SetValue("工具栏", "合并", "False");
-			}
-			if (inihelp.GetValue("工具栏", "拆分") == "发生错误")
-			{
-				inihelp.SetValue("工具栏", "拆分", "False");
-			}
-			if (inihelp.GetValue("工具栏", "检查") == "发生错误")
-			{
-				inihelp.SetValue("工具栏", "检查", "False");
-			}
-			if (inihelp.GetValue("工具栏", "翻译") == "发生错误")
-			{
-				inihelp.SetValue("工具栏", "翻译", "False");
-			}
-			if (inihelp.GetValue("工具栏", "分段") == "发生错误")
-			{
-				inihelp.SetValue("工具栏", "分段", "False");
-			}
-			if (inihelp.GetValue("工具栏", "分栏") == "发生错误")
-			{
-				inihelp.SetValue("工具栏", "分栏", "False");
-			}
-			if (inihelp.GetValue("工具栏", "顶置") == "发生错误")
-			{
-				inihelp.SetValue("工具栏", "顶置", "True");
-			}
-			if (inihelp.GetValue("取色器", "类型") == "发生错误")
-			{
-				inihelp.SetValue("取色器", "类型", "RGB");
-			}
-			if (inihelp.GetValue("特殊", "ali_cookie") == "发生错误")
-			{
-				inihelp.SetValue("特殊", "ali_cookie", "");
-			}
-			if (inihelp.GetValue("特殊", "ali_account") == "发生错误")
-			{
-				inihelp.SetValue("特殊", "ali_account", "");
-			}
-			if (inihelp.GetValue("特殊", "ali_password") == "发生错误")
-			{
-				inihelp.SetValue("特殊", "ali_password", "");
-			}
 		}
 
 		// Token: 0x040001FF RID: 511

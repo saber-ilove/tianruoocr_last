@@ -576,8 +576,8 @@ namespace 天若OCR文字识别
 				if (textBox.Name.Contains("识别界面"))
 				{
 					inihelp.SetValue("快捷键", "识别界面", this.txtBox_识别界面.Text);
-					return;
 				}
+				inihelp.SaveConfig();
 			}
 			else if (e.KeyValue != 16 && e.KeyValue != 17 && e.KeyValue != 18)
 			{
@@ -612,6 +612,7 @@ namespace 天若OCR文字识别
 					{
 						inihelp.SetValue("快捷键", "识别界面", this.txtBox_识别界面.Text);
 					}
+					inihelp.SaveConfig();
 				}
 			}
 		}
@@ -859,6 +860,7 @@ namespace 天若OCR文字识别
 			{
 				inihelp.SetValue("取色器", "类型", "HEX");
 			}
+			inihelp.SaveConfig();
 			base.DialogResult = DialogResult.OK;
 		}
 
